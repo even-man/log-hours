@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+
+{% block head %}
+
+{% endblock %}
+
+{% block body %}
+<h1>Work Data</h1>
+
+<div class="partitions">
+    <ul class="dashboard">
+        <li><span><b>Total Hours Worked:</b></span><i>{{ totalHours }}</i></li>
+        <li><span><b>Wages Earned:</b></span> <i>${{ totalEarned }}</i></li>
+        <li><span><b>Total Shifts Worked:</b></span><i> {{ totalShifts }}</i></li>
+        <li><span><b>Average Earned Per Shift: </b></span><i>${{ averageEarned }}</i></li>
+    </ul>
+</div>
+
+<h2>Shifts:</h2>
+<div class="partitions">
+    <table>
+        <tr>
+            <th>Shift Number</th>
+            <th>Shift Date</th>
+            <th>Shift Hours</th>    
+            <th>Wages Earned</th>
+            <th>actions</th>    
+        </tr>
+
+        {% for shift in shiftList %}
+
+        <tr>
+            <td>{{shift.shift_number}}</td>
+            <td>{{shift.shift_date}}</td>
+            <td>{{shift.shift_hours}}</td>
+            <td>${{shift.shift_earned}}</td>
+            <td>
+                <a href="/update/{{ shift.shift_number }}">update</a>
+                <a href="/delete/{{ shift.shift_number }}">delete</a>
+            </td>
+        </tr>
+
+        {% endfor %}
+    </table>
+</div>
+{% endblock %}

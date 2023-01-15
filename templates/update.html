@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+{% block head %}
+
+{% endblock %}
+
+{% block body %}
+<h1>Update Data</h1>
+<h3>Updating Shift: <i>{{shift.shift_date}}</i></h3>
+
+<form action="/update/{{ shift.shift_number }}" method="post">
+
+    <label for="shift-date">Date:</label>  
+    <input type="date" name="shiftDate" id="shift-date" value="{{ shift.shift_date }}">
+
+    <label for="shift-hours">Hours:</label>  
+    <input type="number" step="0.25" min="0.0" name="shiftHours" id="shift-hours" value = "{{ shift.shift_hours}}"> 
+
+    <label for="toplevel-wages">Hourly Wage:</label>
+    <input type="number" min="0.0" name="toplevelWages" id="toplevel-wages" value="11.00">
+
+
+    <br><br>
+
+    <input type="submit" value="Submit">
+
+</form>
+
+
+{% endblock %}
